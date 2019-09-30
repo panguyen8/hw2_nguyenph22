@@ -132,6 +132,7 @@ public class FaceController implements View.OnClickListener, RadioGroup.OnChecke
     }
 
     public void onStartTrackingTouch(SeekBar seekbar) {
+        /*
         if (fModel.hairColor == 1) {
             switch(seekbar.getId()) {
                 case R.id.redBar:
@@ -163,6 +164,8 @@ public class FaceController implements View.OnClickListener, RadioGroup.OnChecke
                     break;
             }
         }
+        */
+         
     }
 
     public void onStopTrackingTouch(SeekBar seekbar) {
