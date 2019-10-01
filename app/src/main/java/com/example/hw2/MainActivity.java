@@ -11,6 +11,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,7 +34,9 @@ public class MainActivity extends AppCompatActivity {
         SeekBar blueBar = (SeekBar) findViewById(R.id.blueBar);
         blueBar.setOnSeekBarChangeListener(faceController);
 
-
+        TextView seekBarRed = (TextView) findViewById(R.id.redText);
+        TextView seekBarGreen = (TextView) findViewById(R.id.redText);
+        TextView seekBarBlue = (TextView) findViewById(R.id.redText);
 
         Button randomButton = (Button) findViewById(R.id.randomize);
         randomButton.setOnClickListener(faceController);

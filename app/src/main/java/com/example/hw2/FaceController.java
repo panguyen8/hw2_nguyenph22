@@ -91,6 +91,7 @@ public class FaceController implements View.OnClickListener, RadioGroup.OnChecke
             case R.id.redBar:
                 //to turn on hair color sliders
                 if (fModel.hairColor == 1) {
+                    fModel.hairColorRed = progress;
                     fView.invalidate();
                 } else if (fModel.eyeColor == 1) {
                     fModel.eyeColorRed = progress;
@@ -165,7 +166,7 @@ public class FaceController implements View.OnClickListener, RadioGroup.OnChecke
             }
         }
         */
-         
+
     }
 
     public void onStopTrackingTouch(SeekBar seekbar) {
