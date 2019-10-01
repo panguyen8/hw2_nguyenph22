@@ -33,10 +33,7 @@ public class MainActivity extends AppCompatActivity {
         greenBar.setOnSeekBarChangeListener(faceController);
         SeekBar blueBar = (SeekBar) findViewById(R.id.blueBar);
         blueBar.setOnSeekBarChangeListener(faceController);
-
-        TextView seekBarRed = (TextView) findViewById(R.id.redText);
-        TextView seekBarGreen = (TextView) findViewById(R.id.redText);
-        TextView seekBarBlue = (TextView) findViewById(R.id.redText);
+        faceController.setSeekBars(redBar, greenBar, blueBar);
 
         Button randomButton = (Button) findViewById(R.id.randomize);
         randomButton.setOnClickListener(faceController);

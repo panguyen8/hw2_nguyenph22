@@ -18,6 +18,9 @@ public class FaceController implements View.OnClickListener, RadioGroup.OnChecke
     private FaceModel fModel;
     private RadioGroup radioGroup;
     private RadioButton radioButton;
+    private SeekBar seekBarRed;
+    private SeekBar seekBarGreen;
+    private SeekBar seekBarBlue;
 
     public FaceController(Face cv) {
         fView = cv;
@@ -27,9 +30,15 @@ public class FaceController implements View.OnClickListener, RadioGroup.OnChecke
 
     public void onClick(View v) {
         fModel.randomize();
+        updateSeekBars();
         fView.invalidate();
     }
 
+    public void setSeekBars(SeekBar red, SeekBar green, SeekBar blue) {
+        seekBarRed = red;
+        seekBarGreen = green;
+        seekBarBlue = blue;
+    }
 
     public void onItemSelected (AdapterView<?> parent, View view, int position, long id) {
         String hairChoice = (String) parent.getItemAtPosition(position);
@@ -58,8 +67,8 @@ public class FaceController implements View.OnClickListener, RadioGroup.OnChecke
                     fModel.hairColor = 1;
                     fModel.eyeColor = 0;
                     fModel.skinColor = 0;
-                    Log.v(TAG, "hair!");
-
+                    //updates the seekBar
+                    updateSeekBars();
                 }
                 break;
             case R.id.eyesButton:
@@ -67,8 +76,8 @@ public class FaceController implements View.OnClickListener, RadioGroup.OnChecke
                     fModel.hairColor = 0;
                     fModel.eyeColor = 1;
                     fModel.skinColor = 0;
-                    Log.v(TAG, "eyes");
-
+                    //updates the seekBar
+                    updateSeekBars();
                 }
                 break;
             case R.id.skinButton:
@@ -76,7 +85,8 @@ public class FaceController implements View.OnClickListener, RadioGroup.OnChecke
                     fModel.hairColor = 0;
                     fModel.eyeColor = 0;
                     fModel.skinColor = 1;
-                    Log.v(TAG, "skin");
+                    //updates the seekBar
+                    updateSeekBars();
                 }
                 break;
         }
@@ -84,6 +94,24 @@ public class FaceController implements View.OnClickListener, RadioGroup.OnChecke
         fView.invalidate();
     }
 
+    private void updateSeekBars() {
+        if (fModel.hairColor == 1) {
+            seekBarRed.setProgress(fModel.hairColorRed);
+            seekBarGreen.setProgress(fModel.hairColorGreen);
+            seekBarBlue.setProgress(fModel.hairColorBlue);
+            fView.invalidate();
+        } else if (fModel.eyeColor == 1) {
+            seekBarRed.setProgress(fModel.eyeColorRed);
+            seekBarGreen.setProgress(fModel.eyeColorGreen);
+            seekBarBlue.setProgress(fModel.eyeColorBlue);
+            fView.invalidate();
+        } else if (fModel.skinColor == 1) {
+            seekBarRed.setProgress(fModel.skinColorRed);
+            seekBarGreen.setProgress(fModel.skinColorGreen);
+            seekBarBlue.setProgress(fModel.skinColorBlue);
+            fView.invalidate();
+        }
+    }
     public void onProgressChanged(SeekBar seekbar, int progress, boolean fromUser) {
 
 
@@ -133,39 +161,6 @@ public class FaceController implements View.OnClickListener, RadioGroup.OnChecke
     }
 
     public void onStartTrackingTouch(SeekBar seekbar) {
-        /*
-        if (fModel.hairColor == 1) {
-            switch(seekbar.getId()) {
-                case R.id.redBar:
-                    seekbar.setProgress(fModel.hairColorRed);
-                case R.id.blueBar:
-                    seekbar.setProgress(fModel.hairColorBlue);
-                case R.id.greenBar:
-                    seekbar.setProgress(fModel.hairColorRed);
-                    break;
-            }
-        } else if (fModel.eyeColor == 1) {
-            switch(seekbar.getId()) {
-                case R.id.redBar:
-                    seekbar.setProgress(fModel.eyeColorRed);
-                case R.id.blueBar:
-                    seekbar.setProgress(fModel.eyeColorBlue);
-                case R.id.greenBar:
-                    seekbar.setProgress(fModel.eyeColorRed);
-                    break;
-            }
-        } else if (fModel.skinColor == 1) {
-            switch(seekbar.getId()) {
-                case R.id.redBar:
-                    seekbar.setProgress(fModel.skinColorRed);
-                case R.id.blueBar:
-                    seekbar.setProgress(fModel.skinColorBlue);
-                case R.id.greenBar:
-                    seekbar.setProgress(fModel.skinColorRed);
-                    break;
-            }
-        }
-        */
 
     }
 
