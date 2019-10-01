@@ -21,12 +21,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Surface View/Drawing
         Face faceView =  (Face) findViewById(R.id.surfaceView);
         FaceController faceController = new FaceController(faceView);
 
+        //Radio Buttons
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGroupVars);
         radioGroup.setOnCheckedChangeListener(faceController);
 
+        //SeekBar
         SeekBar redBar = (SeekBar) findViewById(R.id.redBar);
         redBar.setOnSeekBarChangeListener(faceController);
         SeekBar greenBar = (SeekBar) findViewById(R.id.greenBar);
@@ -35,9 +38,11 @@ public class MainActivity extends AppCompatActivity {
         blueBar.setOnSeekBarChangeListener(faceController);
         faceController.setSeekBars(redBar, greenBar, blueBar);
 
+        //Button
         Button randomButton = (Button) findViewById(R.id.randomize);
         randomButton.setOnClickListener(faceController);
 
+        //Spinner
         Spinner hairSpinner = (Spinner) findViewById(R.id.spinner);
         hairSpinner.setOnItemSelectedListener(faceController);
         String[] items = new String[] {

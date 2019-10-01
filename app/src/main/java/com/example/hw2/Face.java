@@ -12,6 +12,7 @@ public class Face extends SurfaceView {
 
     FaceModel fModel = new FaceModel();
 
+    //The different colors of the face
     Paint skinPaint = new Paint();
     Paint blackPaint = new Paint();
     Paint whitePaint = new Paint();

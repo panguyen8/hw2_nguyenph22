@@ -22,24 +22,21 @@ public class FaceController implements View.OnClickListener, RadioGroup.OnChecke
     private SeekBar seekBarGreen;
     private SeekBar seekBarBlue;
 
+    //The constructor
     public FaceController(Face cv) {
         fView = cv;
         fModel = cv.getFaceModel();
 
     }
 
+    //The button method for when it is clicked
     public void onClick(View v) {
         fModel.randomize();
         updateSeekBars();
         fView.invalidate();
     }
 
-    public void setSeekBars(SeekBar red, SeekBar green, SeekBar blue) {
-        seekBarRed = red;
-        seekBarGreen = green;
-        seekBarBlue = blue;
-    }
-
+    //Spinner bar that changes the hair
     public void onItemSelected (AdapterView<?> parent, View view, int position, long id) {
         String hairChoice = (String) parent.getItemAtPosition(position);
         Log.v(TAG, hairChoice);
@@ -57,10 +54,12 @@ public class FaceController implements View.OnClickListener, RadioGroup.OnChecke
 
     }
 
+    //For each button clicked, it will be assigned to its respective choice
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         RadioButton checkedRadioButton = (RadioButton)group.findViewById(checkedId);
         boolean isChecked = checkedRadioButton.isChecked();
 
+        //looks for the checkedId
         switch (checkedId) {
             case R.id.hairButton:
                 if (isChecked) {
@@ -94,6 +93,14 @@ public class FaceController implements View.OnClickListener, RadioGroup.OnChecke
         fView.invalidate();
     }
 
+    //Method which grabs the seekbars from main activity, allows them to be updated
+    public void setSeekBars(SeekBar red, SeekBar green, SeekBar blue) {
+        seekBarRed = red;
+        seekBarGreen = green;
+        seekBarBlue = blue;
+    }
+
+    //The Method which updates the seekBar
     private void updateSeekBars() {
         if (fModel.hairColor == 1) {
             seekBarRed.setProgress(fModel.hairColorRed);
@@ -112,9 +119,9 @@ public class FaceController implements View.OnClickListener, RadioGroup.OnChecke
             fView.invalidate();
         }
     }
+
+    //method which allows for the seekbar to change depending on which radio button chosen
     public void onProgressChanged(SeekBar seekbar, int progress, boolean fromUser) {
-
-
         switch(seekbar.getId()){
             case R.id.redBar:
                 //to turn on hair color sliders
@@ -156,8 +163,6 @@ public class FaceController implements View.OnClickListener, RadioGroup.OnChecke
                 }
                 break;
         }
-
-
     }
 
     public void onStartTrackingTouch(SeekBar seekbar) {
